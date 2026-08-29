@@ -1,7 +1,7 @@
-# CodeAlpha_ProjectManagementTool
+# Project Management Tool
 
 A Trello/Asana-style collaborative project management tool built for
-CodeAlpha's Full Stack Development internship (Task 3). Projects have
+CodeAlpha's Full Stack Development internship. Projects have
 boards with lists (To Do / In Progress / Done) and cards you can drag
 between them, assign, and comment on — with real-time updates across
 everyone viewing the same project, using the Socket.io setup we already
