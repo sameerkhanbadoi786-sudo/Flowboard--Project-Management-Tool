@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-     "start": "node server.js",
+    "start": "node server.js",
     "dev": "node --watch --env-file=.env server.js"
   },
   "dependencies": {
@@ -12,7 +12,7 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "nodemailer": "^6.9.14",
+    "resend": "^4.0.1",
     "socket.io": "^4.7.5",
     "uuid": "^9.0.1"
   }
