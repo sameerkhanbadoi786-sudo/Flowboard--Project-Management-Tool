@@ -1,0 +1,289 @@
+:root {
+  /* Flowboard theme v3 — dark-adjacent, high-contrast professional
+     workspace. Deep graphite surfaces with layered elevation instead of
+     flat white cards, a punchy indigo accent, and bold display type for
+     headlines paired with plain system Helvetica for everything you
+     actually read — the Stripe/Linear pattern: personality in the
+     headlines, invisible reliability in the body copy. */
+  --bg: #0c0e14;
+  --bg-elevated: #12151d;
+  --surface: #171b26;
+  --surface-2: #1d222f;
+  --surface-hover: #242a3a;
+  --border: #262c3d;
+  --border-strong: #363e54;
+
+  --text: #f3f4f8;
+  --text-dim: #a0a6bb;
+  --text-faint: #6b7288;
+
+  --primary: #6d63ff;
+  --primary-hover: #7f76ff;
+  --primary-dim: rgba(109, 99, 255, 0.16);
+  --primary-text: #ffffff;
+
+  --success: #2fd4a8;
+  --success-dim: rgba(47, 212, 168, 0.14);
+  --danger: #ff6b6b;
+  --danger-dim: rgba(255, 107, 107, 0.14);
+  --warning: #ffb454;
+  --warning-dim: rgba(255, 180, 84, 0.14);
+
+  --font-display: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --radius-sm: 7px;
+  --radius: 11px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-focus: 0 0 0 3px rgba(109, 99, 255, 0.3);
+  --glow-primary: 0 0 0 1px rgba(109, 99, 255, 0.4), 0 8px 24px rgba(109, 99, 255, 0.18);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- Light theme overrides ---------------------------------------------
+   Applied when <html data-theme="light">. Every component already reads
+   the variables above, so overriding them here re-themes the whole app. */
+[data-theme='light'] {
+  --bg: #f5f6fa;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f0f1f6;
+  --surface-hover: #e9eaf2;
+  --border: #e2e4ee;
+  --border-strong: #c9cce0;
+
+  --text: #1a1c26;
+  --text-dim: #5c6070;
+  --text-faint: #8a8ea3;
+
+  --primary: #6d63ff;
+  --primary-hover: #5a4ff0;
+  --primary-dim: rgba(109, 99, 255, 0.1);
+  --primary-text: #ffffff;
+
+  --success: #12a37f;
+  --success-dim: rgba(18, 163, 127, 0.1);
+  --danger: #e0433f;
+  --danger-dim: rgba(224, 67, 63, 0.1);
+  --warning: #d98a20;
+  --warning-dim: rgba(217, 138, 32, 0.1);
+
+  --shadow-sm: 0 1px 2px rgba(20, 22, 40, 0.06);
+  --shadow-md: 0 8px 24px rgba(20, 22, 40, 0.08), 0 2px 6px rgba(20, 22, 40, 0.05);
+  --shadow-lg: 0 24px 60px rgba(20, 22, 40, 0.12), 0 4px 12px rgba(20, 22, 40, 0.06);
+  --shadow-focus: 0 0 0 3px rgba(109, 99, 255, 0.18);
+  --glow-primary: 0 0 0 1px rgba(109, 99, 255, 0.3), 0 8px 24px rgba(109, 99, 255, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+.navbar,
+.stat-card,
+.project-card,
+.auth-form-panel {
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--primary-dim);
+  color: var(--primary-hover);
+}
+
+/* --- Shared button system --------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 9px 16px;
+  transition: transform 0.12s var(--ease-spring), box-shadow 0.15s var(--ease), background 0.15s var(--ease), opacity 0.15s var(--ease), border-color 0.15s var(--ease);
+  will-change: transform;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-text);
+  box-shadow: var(--glow-primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 0 1px rgba(109, 99, 255, 0.5), 0 10px 30px rgba(109, 99, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.btn-secondary {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-hover);
+  border-color: var(--text-faint);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid transparent;
+}
+
+.btn-ghost:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.btn-danger {
+  background: var(--danger-dim);
+  color: var(--danger);
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* --- Reusable entrance animations -------------------------------------- */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.9) translateY(4px); }
+  60% { opacity: 1; transform: scale(1.02) translateY(0); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-in { animation: fade-in 0.25s var(--ease) both; }
+.animate-fade-slide-up { animation: fade-slide-up 0.32s var(--ease) both; }
+.animate-scale-in { animation: scale-in 0.22s var(--ease-spring) both; }
+.animate-pop-in { animation: pop-in 0.28s var(--ease-spring) both; }
+
+/* The page-transition wrapper sits between #root and every page. It needs
+   an explicit height (not a percentage) so pages relying on min-height:
+   100% actually fill the viewport instead of collapsing to content size. */
+.page-transition {
+  min-height: 100vh;
+  animation: page-fade 0.32s var(--ease) both;
+}
+
+@keyframes page-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Progress bar -------------------------------------------------- */
+
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-md .progress-track { height: 6px; }
+.progress-sm .progress-track { height: 4px; }
+.progress-lg .progress-track { height: 8px; }
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--primary), #9d94ff);
+  box-shadow: 0 0 8px rgba(109, 99, 255, 0.5);
+  transition: width 0.5s var(--ease-spring);
+}
+
+.progress-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+  min-width: 32px;
+  text-align: right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

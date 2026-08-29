@@ -1,0 +1,606 @@
+.board-page {
+  min-height: 100%;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.board-loading {
+  padding: 60px;
+  text-align: center;
+  color: var(--text-dim);
+}
+
+.board-topbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 32px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.board-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.board-back:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.board-topbar h1 {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.board-title-input {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  background: none;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 3px 7px;
+  margin: -3px -7px;
+  width: fit-content;
+  max-width: 100%;
+  transition: border-color 0.15s var(--ease), background 0.15s var(--ease);
+}
+
+.board-title-input:hover {
+  border-color: var(--border);
+}
+
+.board-title-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-focus);
+}
+
+.board-delete-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.board-title-block {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.board-progress {
+  max-width: 220px;
+}
+
+.board-members {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.member-chip {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-dim);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  border: 2px solid var(--surface);
+  margin-left: -8px;
+  transition: transform 0.15s var(--ease-spring);
+}
+
+.member-chip:hover {
+  transform: translateY(-2px);
+  z-index: 1;
+}
+
+.member-chip:first-child {
+  margin-left: 0;
+}
+
+.invite-btn {
+  margin-left: 10px;
+  font-size: 12.5px;
+  padding: 8px 13px;
+}
+
+.invite-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--primary-dim);
+  animation: fade-slide-up 0.2s var(--ease) both;
+}
+
+.invite-form input {
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  outline: none;
+  width: 220px;
+  background: var(--surface);
+}
+
+.invite-form input:focus {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-focus);
+}
+
+.invite-form button {
+  font-size: 13px;
+  padding: 9px 15px;
+}
+
+.invite-error {
+  color: var(--danger);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.board-lists {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  padding: 24px 32px;
+  overflow-x: auto;
+  align-items: flex-start;
+}
+
+.list-column {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+  animation: fade-slide-up 0.3s var(--ease) both;
+}
+
+.list-column.drag-over {
+  background: var(--primary-dim);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary), var(--shadow-md);
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 4px 6px 8px;
+}
+
+.list-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1px 8px;
+  border-radius: 10px;
+}
+
+.list-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 6px;
+}
+
+.board-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 13px;
+  cursor: grab;
+  box-shadow: var(--shadow-sm);
+  transform: perspective(500px) translateZ(0);
+  transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease), transform 0.15s var(--ease-spring), opacity 0.15s var(--ease);
+  animation: fade-slide-up 0.25s var(--ease) both;
+}
+
+.board-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: perspective(500px) translateZ(6px) translateY(-2px);
+}
+
+.board-card:active {
+  cursor: grabbing;
+  /* Physical "press into the board" feel on click, before drag or modal-open kicks in. */
+  transform: perspective(500px) translateZ(-4px) scale(0.98);
+  box-shadow: var(--shadow-sm);
+}
+
+.board-card.dragging {
+  opacity: 0.4;
+  transform: scale(0.96) rotate(-1.5deg);
+  cursor: grabbing;
+  box-shadow: var(--shadow-lg);
+}
+
+.board-card-title {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.board-card-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.board-card-assignee {
+  font-size: 10.5px;
+  font-weight: 700;
+  background: var(--primary-dim);
+  color: var(--primary);
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+.board-card-comments {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-faint);
+  font-weight: 500;
+}
+
+.drop-indicator {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--primary);
+  opacity: 0.5;
+  animation: drop-pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes drop-pulse {
+  0%, 100% { opacity: 0.3; transform: scaleX(0.96); }
+  50% { opacity: 0.65; transform: scaleX(1); }
+}
+
+.add-card-btn, .add-list-btn {
+  background: transparent;
+  border: 1.5px dashed var(--border-strong);
+  color: var(--text-dim);
+  border-radius: var(--radius-sm);
+  padding: 9px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-align: left;
+  transition: border-color 0.15s var(--ease), color 0.15s var(--ease), background 0.15s var(--ease);
+}
+
+.add-card-btn:hover, .add-list-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-dim);
+}
+
+.add-card-form, .add-list-form {
+  display: flex;
+  gap: 6px;
+  animation: scale-in 0.15s var(--ease-spring) both;
+}
+
+.add-card-form input, .add-list-form input {
+  flex: 1;
+  padding: 9px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  outline: none;
+  background: var(--surface);
+}
+
+.add-card-form input:focus, .add-list-form input:focus {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-focus);
+}
+
+.add-card-form button, .add-list-form button {
+  background: var(--primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  transition: background 0.15s var(--ease), transform 0.1s var(--ease-spring);
+}
+
+.add-card-form button:hover, .add-list-form button:hover {
+  background: var(--primary-hover);
+}
+
+.add-card-form button:active, .add-list-form button:active {
+  transform: scale(0.94);
+}
+
+.add-list-col {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+/* --- Card modal ------------------------------------------------------ */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 18, 30, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 20px;
+  animation: fade-in 0.18s var(--ease) both;
+  perspective: 1000px;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 28px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: flip-in 0.4s var(--ease-spring) both;
+}
+
+@keyframes flip-in {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-14deg) translateY(24px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease), transform 0.15s var(--ease-spring);
+}
+
+.modal-close:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+  transform: rotate(90deg);
+}
+
+.modal-title-input {
+  width: 100%;
+  border: none;
+  background: none;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  outline: none;
+  padding: 4px 0;
+  margin-bottom: 18px;
+  padding-right: 30px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s var(--ease);
+}
+
+.modal-title-input:focus {
+  background: var(--surface-2);
+  padding-left: 8px;
+}
+
+.modal-field-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  margin: 18px 0 8px;
+}
+
+.modal-select {
+  width: 100%;
+  padding: 10px 11px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s var(--ease);
+}
+
+.modal-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 13px;
+  font-family: var(--font-body);
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.15s var(--ease);
+}
+
+.modal-textarea:focus, .modal-select:focus {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-focus);
+}
+
+/* Comments — collapsed behind a toggle button instead of always shown */
+
+.comments-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+
+.comments-toggle:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.comments-toggle-chevron {
+  transition: transform 0.2s var(--ease-spring);
+  color: var(--text-faint);
+}
+
+.comments-toggle-chevron.open {
+  transform: rotate(180deg);
+}
+
+.comments-panel {
+  overflow: hidden;
+  animation: expand-panel 0.22s var(--ease) both;
+}
+
+@keyframes expand-panel {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 400px; }
+}
+
+.modal-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 160px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.modal-empty {
+  color: var(--text-faint);
+  font-size: 12px;
+  padding: 8px 2px;
+}
+
+.modal-comment {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 11px;
+  font-size: 12.5px;
+  animation: fade-slide-up 0.2s var(--ease) both;
+}
+
+.modal-comment-author {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 3px;
+}
+
+.modal-comment-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.modal-comment-form input {
+  flex: 1;
+  padding: 9px 11px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  outline: none;
+  transition: border-color 0.15s var(--ease);
+}
+
+.modal-comment-form input:focus {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-focus);
+}
+
+.modal-comment-form button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0 15px;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: background 0.15s var(--ease), transform 0.1s var(--ease-spring);
+}
+
+.modal-comment-form button:hover {
+  background: var(--primary-hover);
+}
+
+.modal-comment-form button:active {
+  transform: scale(0.94);
+}
+
+.modal-delete {
+  margin-top: 24px;
+  width: 100%;
+  padding: 11px;
+  font-size: 12.5px;
+}
