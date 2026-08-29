@@ -1,4 +1,4 @@
-# ProjectManagementTool
+# Project Management Tool
 
 A Trello/Asana-style collaborative project management tool built for
 CodeAlpha's Full Stack Development internship. Projects have
