@@ -131,3 +131,9 @@
   color: var(--text);
   line-height: 1.4;
 }
+@media (max-width: 480px) {
+  .notif-panel {
+    width: calc(100vw - 32px);
+    right: -8px;
+  }
+}

@@ -154,3 +154,22 @@
   background: var(--surface-2);
   animation: fade-in 0.3s var(--ease) both;
 }
+@media (max-width: 640px) {
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .projects-header-actions {
+    width: 100%;
+  }
+
+  .new-project-form {
+    flex-direction: column;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}

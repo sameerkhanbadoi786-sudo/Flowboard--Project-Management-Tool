@@ -129,3 +129,25 @@
 .navbar-theme-toggle:active {
   transform: scale(0.9);
 }
+@media (max-width: 720px) {
+  .navbar {
+    padding: 0 14px;
+    gap: 4px;
+  }
+
+  .navbar-brand {
+    margin-right: 12px;
+  }
+
+  .navbar-username {
+    display: none;
+  }
+
+  .navbar-link span {
+    display: none;
+  }
+
+  .navbar-link {
+    padding: 8px 10px;
+  }
+}

@@ -604,3 +604,46 @@
   padding: 11px;
   font-size: 12.5px;
 }
+@media (max-width: 720px) {
+  .board-topbar {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px 16px;
+  }
+
+  .board-progress {
+    max-width: none;
+    width: 100%;
+    order: 3;
+  }
+
+  .board-members {
+    order: 2;
+  }
+
+  .invite-btn {
+    margin-left: auto;
+  }
+
+  .invite-form {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+  }
+
+  .invite-form input {
+    width: 100%;
+  }
+
+  .board-lists {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .list-column {
+    width: 240px;
+  }
+
+  .modal-card {
+    padding: 20px;
+  }
+}
