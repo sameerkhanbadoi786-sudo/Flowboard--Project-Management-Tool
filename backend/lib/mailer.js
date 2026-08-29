@@ -71,7 +71,7 @@ function welcomeEmailBody(fullName) {
         <table role="presentation" width="100%" style="margin-bottom:8px;">
           <tr>
             <td>
-              <a href="https://flowboard.app" style="display:inline-block;background:#6d63ff;color:#ffffff;font-weight:700;font-size:14px;padding:13px 26px;border-radius:8px;text-decoration:none;">
+              <a href="https://project-management-nu-fawn.vercel.app" style="display:inline-block;background:#6d63ff;color:#ffffff;font-weight:700;font-size:14px;padding:13px 26px;border-radius:8px;text-decoration:none;">
                 Open Flowboard →
               </a>
             </td>
