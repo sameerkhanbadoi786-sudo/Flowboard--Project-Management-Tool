@@ -37,9 +37,9 @@ export default function Navbar() {
 
   return (
     <div className="navbar">
-      <div className="navbar-brand">
+           <div className="navbar-brand">
         <span className="navbar-logo" />
-        Flowboard
+        <span className="navbar-brand-text">Flowboard</span>
       </div>
 
       <div className="navbar-links" ref={containerRef}>
@@ -51,7 +51,7 @@ export default function Navbar() {
             opacity: indicator.opacity,
           }}
         />
-        {links.map(({ to, label, icon: Icon, end }) => (
+                {links.map(({ to, label, icon: Icon, end }) => (
           <NavLink
             key={to}
             to={to}
@@ -60,7 +60,7 @@ export default function Navbar() {
             className={({ isActive }) => `navbar-link ${isActive ? 'active' : ''}`}
           >
             <Icon size={15} />
-            {label}
+            <span className="navbar-link-text">{label}</span>
           </NavLink>
         ))}
       </div>
@@ -77,7 +77,9 @@ export default function Navbar() {
         <NotificationBell />
         <span className="navbar-avatar">{displayName?.[0]?.toUpperCase()}</span>
         <span className="navbar-username">{displayName}</span>
-        <button className="btn btn-ghost navbar-logout" onClick={logout}>Sign out</button>
+        <button className="btn btn-ghost navbar-logout" onClick={logout}>
+        <span className="navbar-logout-text">Sign out</span>
+        </button>
       </div>
     </div>
   )

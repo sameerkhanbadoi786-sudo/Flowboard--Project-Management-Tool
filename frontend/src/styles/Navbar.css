@@ -131,23 +131,40 @@
 }
 @media (max-width: 720px) {
   .navbar {
-    padding: 0 14px;
+    padding: 0 10px;
     gap: 4px;
   }
 
   .navbar-brand {
-    margin-right: 12px;
+    margin-right: 6px;
+  }
+
+  .navbar-brand-text {
+    display: none;
+  }
+
+  .navbar-link-text {
+    display: none;
+  }
+
+  .navbar-link {
+    padding: 9px;
   }
 
   .navbar-username {
     display: none;
   }
 
-  .navbar-link span {
-    display: none;
+  .navbar-logout {
+    padding: 8px 10px;
   }
 
-  .navbar-link {
-    padding: 8px 10px;
+  .navbar-logout-text::before {
+    content: "⏻";
+    font-size: 14px;
+  }
+
+  .navbar-logout-text {
+    font-size: 0;
   }
 }
