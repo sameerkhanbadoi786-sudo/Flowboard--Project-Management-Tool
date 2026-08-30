@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useTheme } from '../context/ThemeContext.jsx'
-import { FiHome, FiGrid, FiTool, FiSun, FiMoon, FiLogOut } from 'react-icons/fi'
+import { FiHome, FiGrid, FiTool, FiSun, FiMoon, FiLogOut, FiMenu, FiX } from 'react-icons/fi'
 import NotificationBell from './NotificationBell.jsx'
 import '../styles/Navbar.css'
 
@@ -20,6 +20,8 @@ export default function Navbar() {
   const containerRef = useRef(null)
   const linkRefs = useRef({})
   const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 })
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuRef = useRef(null)
 
   useEffect(() => {
     const active = links.find((l) =>
@@ -35,9 +37,24 @@ export default function Navbar() {
     }
   }, [location.pathname])
 
+  // Route badalte hi mobile dropdown apne aap band ho jaye.
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
+
+  // Bahar click karne pe dropdown band ho jaye.
+  useEffect(() => {
+    if (!menuOpen) return
+    const onClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false)
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
+  }, [menuOpen])
+
   return (
     <div className="navbar">
-           <div className="navbar-brand">
+      <div className="navbar-brand">
         <span className="navbar-logo" />
         <span className="navbar-brand-text">Flowboard</span>
       </div>
@@ -51,7 +68,7 @@ export default function Navbar() {
             opacity: indicator.opacity,
           }}
         />
-                {links.map(({ to, label, icon: Icon, end }) => (
+        {links.map(({ to, label, icon: Icon, end }) => (
           <NavLink
             key={to}
             to={to}
@@ -74,13 +91,51 @@ export default function Navbar() {
         >
           {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
         </button>
+
         <NotificationBell />
+
         <span className="navbar-avatar">{displayName?.[0]?.toUpperCase()}</span>
         <span className="navbar-username">{displayName}</span>
-              <button className="btn btn-ghost navbar-logout" onClick={logout}>
+
+        <button className="btn btn-ghost navbar-logout" onClick={logout}>
           <FiLogOut size={15} />
           <span className="navbar-logout-text">Sign out</span>
         </button>
+
+        <div className="navbar-mobile-menu" ref={menuRef}>
+          <button
+            type="button"
+            className="navbar-hamburger"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label="Menu"
+          >
+            {menuOpen ? <FiX size={18} /> : <FiMenu size={18} />}
+          </button>
+
+          {menuOpen && (
+            <div className="navbar-dropdown">
+              {links.map(({ to, label, icon: Icon, end }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  end={end}
+                  className={({ isActive }) => `navbar-dropdown-link ${isActive ? 'active' : ''}`}
+                >
+                  <Icon size={16} />
+                  {label}
+                </NavLink>
+              ))}
+              <button type="button" className="navbar-dropdown-item" onClick={toggleTheme}>
+                {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
+                {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+              </button>
+              <button type="button" className="navbar-dropdown-item navbar-dropdown-logout" onClick={logout}>
+                <FiLogOut size={16} />
+                Sign out
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

@@ -104,6 +104,7 @@
 .navbar-logout {
   font-size: 12px;
   padding: 7px 12px;
+  flex-shrink: 0;
 }
 
 .navbar-theme-toggle {
@@ -129,26 +130,110 @@
 .navbar-theme-toggle:active {
   transform: scale(0.9);
 }
+
+/* --- Mobile hamburger menu --------------------------------------------- */
+
+.navbar-mobile-menu {
+  position: relative;
+  display: none;
+}
+
+.navbar-hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.navbar-hamburger:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.navbar-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  z-index: 40;
+  animation: scale-in 0.15s var(--ease-spring) both;
+  transform-origin: top right;
+}
+
+.navbar-dropdown-link,
+.navbar-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+}
+
+.navbar-dropdown-link:hover,
+.navbar-dropdown-item:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.navbar-dropdown-link.active {
+  color: #b3adff;
+  background: var(--primary-dim);
+}
+
+.navbar-dropdown-logout {
+  color: var(--danger);
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+  padding-top: 12px;
+}
+
+.navbar-dropdown-logout:hover {
+  background: var(--danger-dim);
+  color: var(--danger);
+}
+
 @media (max-width: 720px) {
   .navbar {
-    padding: 0 10px;
-    gap: 4px;
+    padding: 0 12px;
+    gap: 8px;
   }
 
   .navbar-brand {
-    margin-right: 6px;
+    margin-right: 0;
   }
 
   .navbar-brand-text {
     display: none;
   }
 
-  .navbar-link-text {
+  .navbar-links {
     display: none;
   }
 
-  .navbar-link {
-    padding: 9px;
+  .navbar-theme-toggle {
+    display: none;
   }
 
   .navbar-username {
@@ -156,14 +241,10 @@
   }
 
   .navbar-logout {
-    padding: 8px 10px;
-  }
-
-    .navbar-logout-text {
     display: none;
   }
 
-  .navbar-logout-text {
-    font-size: 0;
+  .navbar-mobile-menu {
+    display: flex;
   }
 }
