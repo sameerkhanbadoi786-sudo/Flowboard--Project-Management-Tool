@@ -3,7 +3,7 @@
   flex-shrink: 0;
 }
 
-.notif-bell-btn {
+button.notif-bell-btn {
   position: relative;
   padding: 8px;
   width: 36px;
@@ -15,10 +15,11 @@
   color: var(--text-dim);
 }
 
-.notif-bell-btn:hover {
+button.notif-bell-btn:hover {
   background: var(--surface-hover);
   color: var(--text);
 }
+
 .notif-badge {
   position: absolute;
   top: 2px;
@@ -141,6 +142,7 @@
   color: var(--text);
   line-height: 1.4;
 }
+
 @media (max-width: 480px) {
   .notif-panel {
     width: calc(100vw - 32px);
