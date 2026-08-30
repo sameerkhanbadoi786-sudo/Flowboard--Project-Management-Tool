@@ -159,9 +159,8 @@
     padding: 8px 10px;
   }
 
-  .navbar-logout-text::before {
-    content: "⏻";
-    font-size: 14px;
+    .navbar-logout-text {
+    display: none;
   }
 
   .navbar-logout-text {

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useTheme } from '../context/ThemeContext.jsx'
-import { FiHome, FiGrid, FiTool, FiSun, FiMoon } from 'react-icons/fi'
+import { FiHome, FiGrid, FiTool, FiSun, FiMoon, FiLogOut } from 'react-icons/fi'
 import NotificationBell from './NotificationBell.jsx'
 import '../styles/Navbar.css'
 
@@ -77,8 +77,9 @@ export default function Navbar() {
         <NotificationBell />
         <span className="navbar-avatar">{displayName?.[0]?.toUpperCase()}</span>
         <span className="navbar-username">{displayName}</span>
-        <button className="btn btn-ghost navbar-logout" onClick={logout}>
-        <span className="navbar-logout-text">Sign out</span>
+              <button className="btn btn-ghost navbar-logout" onClick={logout}>
+          <FiLogOut size={15} />
+          <span className="navbar-logout-text">Sign out</span>
         </button>
       </div>
     </div>
