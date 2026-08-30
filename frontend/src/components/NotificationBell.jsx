@@ -47,7 +47,7 @@ export default function NotificationBell() {
         onClick={() => setOpen((v) => !v)}
         aria-label="Notifications"
       >
-        <FiBell size={17} />
+        <FiBell size={18} />
         {unreadCount > 0 && <span className="notif-badge">{unreadCount > 9 ? '9+' : unreadCount}</span>}
       </button>
 

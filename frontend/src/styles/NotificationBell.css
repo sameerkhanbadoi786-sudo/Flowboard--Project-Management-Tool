@@ -9,8 +9,16 @@
   width: 36px;
   height: 36px;
   flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
 }
 
+.notif-bell-btn:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
 .notif-badge {
   position: absolute;
   top: 2px;
