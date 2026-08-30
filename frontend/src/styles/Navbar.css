@@ -240,11 +240,14 @@
     display: none;
   }
 
-  .navbar-logout {
-    display: none;
+    .navbar-user .navbar-logout {
+    display: none !important;
   }
 
   .navbar-mobile-menu {
     display: flex;
+  }
+  .navbar-user {
+    gap: 6px;
   }
 }
