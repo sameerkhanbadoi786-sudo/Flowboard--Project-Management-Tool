@@ -218,14 +218,16 @@
   .navbar {
     padding: 0 12px;
     gap: 8px;
+    justify-content: space-between;
   }
 
   .navbar-brand {
     margin-right: 0;
   }
 
-  .navbar-links {
+    .navbar-links {
     display: none;
+    
   }
 
   .navbar-theme-toggle {
