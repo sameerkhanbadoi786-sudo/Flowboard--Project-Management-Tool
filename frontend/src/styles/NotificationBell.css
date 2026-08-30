@@ -1,5 +1,6 @@
 .notif-bell-wrap {
   position: relative;
+  flex-shrink: 0;
 }
 
 .notif-bell-btn {
