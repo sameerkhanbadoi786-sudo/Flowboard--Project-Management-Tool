@@ -225,9 +225,8 @@
     margin-right: 0;
   }
 
-    .navbar-links {
+  .navbar-links {
     display: none;
-    
   }
 
   .navbar-theme-toggle {
@@ -242,14 +241,18 @@
     display: none;
   }
 
-    .navbar-user .navbar-logout {
+  .navbar-user .navbar-logout {
     display: none !important;
   }
 
   .navbar-mobile-menu {
     display: flex;
   }
+
   .navbar-user {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
     gap: 6px;
   }
 }
