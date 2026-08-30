@@ -224,15 +224,15 @@
     margin-right: 0;
   }
 
-  .navbar-brand-text {
-    display: none;
-  }
-
   .navbar-links {
     display: none;
   }
 
   .navbar-theme-toggle {
+    display: none;
+  }
+
+  .navbar-avatar {
     display: none;
   }
 
