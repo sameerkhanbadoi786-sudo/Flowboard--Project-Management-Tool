@@ -189,7 +189,7 @@ export default function Board() {
             title="Delete project"
             onClick={() => setDeleteOpen(true)}
           >
-            <FiTrash2 />
+            <FiTrash2 size={18} />
           </button>
         )}
       </div>
