@@ -74,11 +74,15 @@
   box-shadow: var(--shadow-focus);
 }
 
-.board-delete-btn {
+button.board-delete-btn {
   width: 36px;
   height: 36px;
-  padding: 0;
+  min-width: 36px;
+  max-width: 36px;
+  flex-grow: 0;
   flex-shrink: 0;
+  flex-basis: 36px;
+  padding: 0;
 }
 
 .board-title-block {
